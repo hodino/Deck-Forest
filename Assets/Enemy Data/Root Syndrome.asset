@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69df85bf9f4a5946b0db2df2c4c1e0b, type: 3}
+  m_Name: Root Syndrome
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Root Syndrome
+  enemyImage: {fileID: 21300000, guid: 8817b22311f801240b1e4ce71eb1ff7b, type: 3}
+  enemyScale: 1
+  maxHp: 50
+  minAttackDamage: 5
+  maxAttackDamage: 10
+  minDefendAmount: 1
+  maxDefendAmount: 5
+  attackSprite: {fileID: 21300000, guid: e2eaea5610665494ca7a658a15147393, type: 3}
+  hitSprite: {fileID: 21300000, guid: 281a5c147bee3914abd5bde691787bb1, type: 3}
+  isBoss: 0
