@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김선우 Deck Forest 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: single reading column, numbered case-file sections, card-edge motif on panels */
+:root{
+  --bg:#f2f5f0; --panel:#ffffff; --ink:#16241c; --muted:#56655c; --line:#d5ddd3;
+  --accent:#2c6b4c; --accent-ink:#ffffff; --gold:#a9772a; --code-bg:#e6ece4;
+  --font-display:"Noto Serif KR",Georgia,serif;
+  --font-body:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101a14; --panel:#17241c; --ink:#e7eee8; --muted:#9db0a3; --line:#2a3b30;
+    --accent:#6fc59a; --accent-ink:#0d1a12; --gold:#d8a850; --code-bg:#1f3026; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101a14; --panel:#17241c; --ink:#e7eee8; --muted:#9db0a3; --line:#2a3b30;
+  --accent:#6fc59a; --accent-ink:#0d1a12; --gold:#d8a850; --code-bg:#1f3026; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.7;font-size:16px}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+code{font-family:var(--font-mono);font-size:.86em;background:var(--code-bg);padding:.1em .4em;border-radius:4px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);padding:56px 0 40px}
+.eyebrow{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+h1{font-family:var(--font-display);font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.15;margin:.3em 0 .2em;text-wrap:balance}
+.sub{font-size:1.1rem;color:var(--muted);margin:0 0 20px;max-width:60ch}
+.badge{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:.9rem;padding:6px 12px;border-radius:6px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:10px 16px;border:1.5px solid var(--accent);border-radius:8px;text-decoration:none;font-weight:500}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+nav.toc{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav.toc .wrap{display:flex;gap:4px 16px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav.toc a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.9rem}
+nav.toc a:hover{color:var(--accent)}
+section{padding:44px 0 8px}
+h2{font-family:var(--font-display);font-size:1.7rem;margin:0 0 .5em;display:flex;gap:12px;align-items:baseline}
+h2 .no{font-family:var(--font-mono);font-size:.85rem;color:var(--gold);font-weight:500}
+h3{font-size:1.1rem;margin:0 0 .5em}
+.lead{color:var(--muted);margin:0 0 20px;max-width:65ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px 12px 12px 4px;padding:20px 22px;margin:0 0 16px}
+.panel ul{margin:.3em 0 0;padding-left:1.2em}
+.panel li{margin:.35em 0}
+.tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.tbl th,.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+.tbl th{width:28%;background:var(--code-bg);font-weight:700}
+.tbl.three th{width:auto}
+.scroll{overflow-x:auto}
+figure{margin:0 0 20px}
+figure img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0 0 16px;display:grid;gap:10px}
+.steps li{counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px 12px 52px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:.75rem;color:var(--gold);margin-right:6px}
+dl.ps{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px}
+dl.ps dt{font-weight:700;color:var(--accent)}
+dl.ps dd{margin:0}
+footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 56px;color:var(--muted);font-size:.9rem}
+@media (max-width:520px){dl.ps{grid-template-columns:1fr}dl.ps dt{margin-top:6px}.tbl th{width:34%}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">김선우 · 목원대학교 컴퓨터융합학부 · 게임 클라이언트 개발 지원</div>
+    <h1>Deck Forest</h1>
+    <p class="sub">Unity 6 · C#으로 만든 2D 카드 로그라이크. 탐험, 턴제 카드 전투, 보상, 상점·창고, 저장까지 한 사이클을 3인 팀이 1년 6개월간 완성했습니다.</p>
+    <span class="badge">2026 제39회 컴퓨터융합학부 학술제 AI융합페스티벌 우수상 (16팀 중 5팀)</span>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/hodino/Deck-Forest">GitHub 저장소</a>
+      <a class="btn" href="https://github.com/hodino/Deck-Forest#readme">시연 영상 보기</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="목차">
+  <div class="wrap">
+    <a href="#glance">한눈에 보기</a><a href="#overview">개요와 역할</a><a href="#impl">핵심 구현</a><a href="#ai">AI 활용</a><a href="#trouble">트러블슈팅</a><a href="#retro">회고</a><a href="#links">링크</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="glance">
+  <h2><span class="no">01</span>한눈에 보기</h2>
+  <p class="lead">Deck Forest는 횡스크롤 탐험과 턴제 카드 전투를 결합한 Unity 6 기반 2D 로그라이크로, 3인 팀이 1년 6개월간 만들어 학술제 우수상을 받았습니다.</p>
+  <figure>
+    <img src="images/battle.gif" alt="Deck Forest 전투 화면 플레이 GIF" width="960" height="540">
+    <figcaption>전투 시연 GIF. 카드를 드래그해 사용하고 턴을 종료하면 연출이 순서대로 재생됩니다.</figcaption>
+  </figure>
+  <div class="scroll"><table class="tbl">
+    <tr><th>수상</th><td>2026년도 제39회 컴퓨터융합학부 학술제 AI융합페스티벌 우수상 (16팀 중 5팀)</td></tr>
+    <tr><th>기간 · 팀</th><td>1년 6개월 · 3인 (목원대학교 컴퓨터융합학부)</td></tr>
+    <tr><th>내 역할</th><td>팀장 · 기획 · 클라이언트 개발(UI 위주) · 전체 코드 구조 설계 · AI 생성 코드 검증과 통합</td></tr>
+    <tr><th>기술 스택</th><td>Unity 6 (6000.2.9f1), C#, UGUI, TextMeshPro, Input System, Audio Mixer</td></tr>
+    <tr><th>규모</th><td>씬 16개 · C# 스크립트 53개(약 5,500줄) · 카드 11종 · 적 4종</td></tr>
+    <tr><th>AI 도구</th><td>Gemini(코드 초안·재검사), Higgsfield AI(UI·오브젝트 이미지 소스)</td></tr>
+  </table></div>
+</section>
+
+<section id="overview">
+  <h2><span class="no">02</span>프로젝트 개요와 내 역할</h2>
+  <p class="lead">플레이어는 횡스크롤 맵을 탐험하며 이벤트와 적을 만나고, 코스트를 쓰는 턴제 카드 전투로 진행한 뒤 보상 카드로 덱을 키웁니다.</p>
+  <div class="panel">
+    <ul>
+      <li><strong>탐험</strong>: 좌우 이동, 선택지 이벤트(체력·골드 증감), 미니맵으로 다음 방 종류 예고 (전투 70% · 휴식 20% · 보물 10%)</li>
+      <li><strong>전투</strong>: 매 턴 코스트 +1(최대 10), 카드를 드래그해 사용, 턴 종료 시 공격 연출과 함께 피해 적용, 적의 다음 행동은 아이콘으로 미리 표시</li>
+      <li><strong>성장</strong>: 승리 보상 카드 선택, 상점 구매·뽑기, 창고에서 덱과 가방 카드 교체</li>
+      <li><strong>진행</strong>: 방을 5번 클리어하면 보스 방으로 진입하고 엔딩 화면으로 이어집니다</li>
+    </ul>
+  </div>
+  <h3>팀 구성</h3>
+  <div class="scroll"><table class="tbl three">
+    <thead><tr><th>이름</th><th>역할</th><th>담당</th></tr></thead>
+    <tbody>
+      <tr><td>김선우 (팀장)</td><td>기획 · 클라이언트</td><td>게임 기획, UI 중심 클라이언트 개발, 전체 코드 구조 설계, AI 생성 코드 검증과 통합</td></tr>
+      <tr><td>안창민</td><td>클라이언트</td><td>클라이언트 개발 전반</td></tr>
+      <tr><td>김예림</td><td>디자인 · 그래픽</td><td>디자인과 그래픽 리소스, 그래픽 관련 코드 유지보수</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="impl">
+  <h2><span class="no">03</span>핵심 구현</h2>
+  <p class="lead">데이터와 로직을 나눠 콘텐츠를 에셋으로 늘리고, 전투·UI·저장을 각각 매니저로 분리한 구조가 프로젝트의 중심입니다. 저는 전체 설계와 일부 구조를 맡았습니다.</p>
+
+  <div class="panel">
+    <h3>1. ScriptableObject 기반 데이터 구조</h3>
+    <dl class="ps">
+      <dt>설계 의도</dt><dd>카드와 적 수치를 코드 밖으로 빼서, 코드 수정 없이 에셋 추가만으로 콘텐츠를 늘리기 위해서입니다.</dd>
+      <dt>구현</dt><dd><code>CardData</code>(코스트, 타입, 수치, 상태이상, 상점 가격, 이펙트 프리팹, 타격음)와 <code>EnemyData</code>(체력, 공격·방어 수치 범위, 모션 스프라이트, 보스 여부)를 <code>ScriptableObject</code>로 정의했습니다. 세이브에는 카드 대신 ID 목록을 저장하고, 불러올 때 카드 DB에서 복원합니다.</dd>
+      <dt>규모</dt><dd>카드 11종, 적 4종(보스 1종)</dd>
+    </dl>
+  </div>
+
+  <div class="panel">
+    <h3>2. 코루틴 기반 턴제 전투</h3>
+    <dl class="ps">
+      <dt>설계 의도</dt><dd>카드 투척, 피격 모션, 피해 계산, 적 행동이 정해진 순서로 이어지는 연출을 하나의 흐름으로 제어하기 위해서입니다.</dd>
+      <dt>구현</dt><dd><code>BattleManager</code>의 <code>ProcessTurnSequence()</code> 코루틴이 카드별 투척 연출, 피격 모션과 효과음, 피해 계산, 적 행동을 순서대로 실행합니다. 연출 중에는 <code>isTurnProcessing</code> 플래그로 입력을 막고, 덱은 Fisher–Yates 방식으로 섞습니다.</dd>
+      <dt>피해 공식</dt><dd>(기본 피해 + 이번 턴 공격 카드 합 + 근력) × 1.5 (적이 취약 상태일 때)</dd>
+      <dt>적 AI</dt><dd>매 턴 공격 또는 방어를 무작위로 고르고, 수치 범위 안의 값을 의도(Intent) 아이콘으로 미리 보여줍니다.</dd>
+    </dl>
+  </div>
+
+  <div class="panel">
+    <h3>3. 카드 UI 인터랙션</h3>
+    <dl class="ps">
+      <dt>설계 의도</dt><dd>손패, 사용 기록, 인벤토리, 도감에서 같은 카드 프리팹을 재사용해 UI 중복을 줄이기 위해서입니다.</dd>
+      <dt>구현</dt><dd><code>CardController</code>가 <code>IBeginDragHandler</code>, <code>IDragHandler</code>, <code>IEndDragHandler</code>를 구현해 드래그 앤 드롭을 처리합니다. 드롭 존 위에서 놓고 코스트가 충분할 때만 카드가 사용되고, 아니면 원래 자리로 돌아갑니다. 호버 시 카드가 확대되며 위로 올라오고, 코스트가 부족한 카드는 회색으로 표시됩니다. 모드 플래그로 손패, 사용 기록, 인벤토리, 도감의 4가지 용도를 구분합니다.</dd>
+    </dl>
+  </div>
+
+  <div class="panel">
+    <h3>4. 씬 간 상태 유지와 저장</h3>
+    <dl class="ps">
+      <dt>설계 의도</dt><dd>16개 씬을 오가도 HP, 골드, 덱이 유지되고, 씬 종류에 따라 UI가 자동으로 바뀌게 하기 위해서입니다.</dd>
+      <dt>구현</dt><dd><code>GameManager</code>, <code>StageUIManager</code>, <code>GlobalSceneFader</code>를 싱글톤과 <code>DontDestroyOnLoad</code>로 유지하고, <code>SceneManager.sceneLoaded</code> 이벤트로 전투 UI와 탐험 UI를 전환합니다. <code>JsonUtility</code>로 HP, 골드, 덱, 가방, 창고, 도감을 <code>persistentDataPath</code>에 저장하며, 저장 파일이 없으면 시작 덱을 지급합니다.</dd>
+    </dl>
+  </div>
+
+  <div class="panel">
+    <h3>5. 연출과 상점·창고</h3>
+    <ul>
+      <li><strong>뽑기 연출</strong>: 효과음 길이(<code>AudioClip.length</code>)를 상자 이미지 3장에 나눠 페이드 타이밍을 맞췄습니다.</li>
+      <li><strong>창고</strong>: 덱과 가방 카드를 교체할 때 <code>SmoothStep</code> 보간으로 위치를 바꾸는 애니메이션을 넣었습니다.</li>
+      <li><strong>전투 모션</strong>: 예비동작, 돌진, 복귀 3단계 공격 모션과 넉백·흔들림 피격 모션을 코루틴으로 구현하고, 거리·각도·시간을 인스펙터에서 조절할 수 있게 했습니다.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ai">
+  <h2><span class="no">04</span>AI 활용 방식</h2>
+  <p class="lead">구조 설계와 최종 검증은 직접 하고, Gemini에는 개별 기능의 초안과 재검사를 맡기는 순서로 작업했습니다.</p>
+  <ol class="steps">
+    <li>전체 코드 구조와 매니저 간 역할을 직접 설계</li>
+    <li>Gemini로 개별 기능 코드 초안 작성</li>
+    <li>연동되는 스크립트와 맞는지 직접 검사하고 수정</li>
+    <li>수정본을 다시 Gemini에 검사시켜 누락이나 오류 확인</li>
+  </ol>
+  <p>오류 수정과 유지보수도 같은 순서로 진행했습니다. UI·오브젝트 이미지 소스는 Higgsfield AI로 만들어 에셋스토어의 흑백 잉크 톤 아트와 맞췄습니다.</p>
+  <div class="panel">
+    <h3><span class="tag">CASE</span>상점 매니저 통합</h3>
+    <dl class="ps">
+      <dt>문제</dt><dd>Gemini로 만든 <code>StoreManager</code> 초안을 그대로 쓰면 프로젝트의 <code>GameManager</code> 데이터 구조와 연동되지 않았습니다.</dd>
+      <dt>직접 수정</dt><dd>연동되는 코드의 변수명과 코루틴 방식, 그리고 <code>GameManager</code>에 기록된 카드 획득 목록(<code>collectionHistory</code>)을 불러오는 부분을 수정했습니다.</dd>
+      <dt>적용 구조</dt><dd><code>RefreshShopItems()</code>는 획득 기록이 있는 카드 ID만 후보로 삼고, 기록이 없으면 전체 카드 DB로 대체합니다. 중복 없이 최대 3장을 뽑아 슬롯에 진열합니다.</dd>
+      <dt>결과</dt><dd>수정 후 상점이 다른 매니저와 연동 오류 없이 동작했습니다.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="trouble">
+  <h2><span class="no">05</span>트러블슈팅</h2>
+  <div class="panel">
+    <h3>1. 카드 투척 연출에서 빈 하얀 사각형이 날아가는 문제</h3>
+    <dl class="ps">
+      <dt>문제</dt><dd>턴 종료 시 사용한 카드가 적에게 날아가는 연출에서 카드 그림 대신 빈 하얀 사각형이 표시됐습니다.</dd>
+      <dt>원인</dt><dd>투척 연출 오브젝트에 사용한 카드의 데이터(틀·그림·이름·코스트)가 세팅되지 않아 빈 <code>Image</code>만 보였습니다.</dd>
+      <dt>해결</dt><dd>투척 연출 전용 UI 프리팹(<code>uiFlyingCardPrefab</code>)을 따로 만들어 적용하고, <code>CardDisplay</code>로 이번 턴에 사용한 카드 데이터를 그대로 세팅했습니다. 카드를 쓰지 않은 턴에는 투척 연출을 생략하고, 투척 애니메이션은 3종 중 무작위로 재생합니다.</dd>
+      <dt>결과</dt><dd>실제로 사용한 카드가 사용한 장수만큼 정확히 날아갑니다.</dd>
+    </dl>
+  </div>
+  <div class="panel">
+    <h3>2. 공격·피격 모션 스프라이트가 대기 애니메이션에 덮어씌워지는 문제</h3>
+    <dl class="ps">
+      <dt>문제</dt><dd>공격·피격 순간 바꾼 스프라이트가 곧바로 대기 모션으로 돌아가 모션이 보이지 않았습니다.</dd>
+      <dt>원인</dt><dd>플레이 화면을 직접 확인하며 추적한 결과, <code>Animator</code>가 매 프레임 대기 애니메이션 스프라이트를 덮어쓰고 있었습니다.</dd>
+      <dt>해결</dt><dd>모션 코루틴이 실행되는 동안 <code>Animator</code>를 비활성화하고, 모션이 끝나면 원래 상태로 복구했습니다.</dd>
+      <dt>결과</dt><dd>예비동작, 돌진, 복귀의 코드 기반 모션이 의도대로 재생됩니다.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="retro">
+  <h2><span class="no">06</span>회고와 개선 계획</h2>
+  <p class="lead">한 사이클(탐험, 전투, 보상, 상점·창고, 저장)은 완성했고, 코드를 다시 읽으며 아래 한계를 확인해 개선 항목으로 정리했습니다.</p>
+  <div class="scroll"><table class="tbl three">
+    <thead><tr><th>한계</th><th>개선 방향</th></tr></thead>
+    <tbody>
+      <tr><td>사용한 카드를 다시 섞는 버림 더미가 없어 시작 덱 8장이 전투 후반에 바닥남</td><td>버림 더미와 재셔플 도입</td></tr>
+      <tr><td>카드 설명문과 실제 수치가 3장에서 다름</td><td>설명문을 수치에서 자동 생성</td></tr>
+      <tr><td>피해 처리가 여러 스크립트에 나뉘어 있고 씬 이름이 문자열로 흐름</td><td>피해 처리 경로 일원화, 씬 이름 상수화</td></tr>
+      <tr><td>휴식·보물 방이 미니맵 아이콘만 반영되고 실제 콘텐츠가 없음</td><td>휴식·보물 방 콘텐츠 연결</td></tr>
+      <tr><td>카드 효과가 타입과 필드 방식이라 늘어날수록 데이터 클래스가 비대해짐</td><td>효과를 목록으로 조합하는 구조로 확장</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="links">
+  <h2><span class="no">07</span>링크</h2>
+  <p class="lead">코드와 시연 영상은 GitHub 저장소에서 바로 확인할 수 있습니다.</p>
+  <div class="scroll"><table class="tbl">
+    <tr><th>GitHub 저장소</th><td><a href="https://github.com/hodino/Deck-Forest">github.com/hodino/Deck-Forest</a></td></tr>
+    <tr><th>시연 영상</th><td><a href="https://github.com/hodino/Deck-Forest#readme">저장소 첫 화면에서 재생 (1분 49초)</a></td></tr>
+    <tr><th>전투 시연 GIF</th><td><a href="https://github.com/hodino/Deck-Forest/blob/main/docs/images/battle.gif">battle.gif</a></td></tr>
+    <tr><th>핵심 코드</th><td>
+      <a href="https://github.com/hodino/Deck-Forest/blob/main/Assets/Script/Manager/BattleManager.cs">BattleManager.cs</a> ·
+      <a href="https://github.com/hodino/Deck-Forest/blob/main/Assets/Script/Card/CardController.cs">CardController.cs</a> ·
+      <a href="https://github.com/hodino/Deck-Forest/blob/main/Assets/Script/Manager/GameManager.cs">GameManager.cs</a> ·
+      <a href="https://github.com/hodino/Deck-Forest/blob/main/Assets/Script/Manager/StoreManager.cs">StoreManager.cs</a>
+    </td></tr>
+  </table></div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">김선우 · 목원대학교 컴퓨터융합학부 (2027년 2월 졸업 예정) · Deck Forest</div>
+</footer>
+</body>
+</html>
