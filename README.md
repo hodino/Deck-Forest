@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/42b4735a-99c4-4f67-b188-1aa18b11ac2f
 | 엔진 | Unity 6 (6000.2.9f1) |
 | 언어 | C# |
 | 주요 패키지 | UGUI, TextMeshPro, Input System 1.14, Timeline, Audio Mixer |
-| AI 활용 | Gemini (코드 초안·검토), Higgsfield AI (UI·오브젝트 이미지 소스) |
+| AI 활용 | Gemini (코드 초안·검토), Higgsfield (UI·오브젝트 이미지 소스) |
 | 플랫폼 | Windows (PC) |
 
 ## 팀 구성 및 역할
