@@ -6,9 +6,7 @@
 <!-- 전투 GIF 자리: 카드 드래그 → 턴 종료 → 카드 투척 연출 → 적 피격 -->
 ![전투 시연](docs/images/battle.gif)
 
-| 플레이 영상 (YouTube) | 예비 영상 (저장소 내 파일) | 빌드 다운로드 |
-|---|---|---|
-| [YouTube 링크](URL) | [Play.mp4 (720p)](docs/video/Play.mp4) | [Releases](../../releases) |
+▶ **[시연 영상 보기 (Play.mp4, 720p · 약 1분 49초)](docs/video/Play.mp4)**
 
 ---
 
@@ -177,9 +175,10 @@ Assets/Script
 2. 아래 "사용 에셋"의 에셋스토어 패키지를 각자 계정으로 받아 `Assets/AssetStore/`에 임포트
 3. `StartScene`에서 실행
 
-빌드만 실행하려면 [Releases](../../releases)에서 Windows 빌드를 받으세요.
+실행 가능한 빌드는 준비 중이며, 플레이 모습은 위 시연 영상과 GIF에서 확인할 수 있습니다.
 
 > 에셋스토어 라이선스상 유료·무료 에셋 원본은 저장소에 포함하지 않았습니다.
+> 에셋이 없는 상태로 프로젝트를 열면 일부 이미지가 Missing으로 표시될 수 있습니다.
 
 ## 사용 에셋
 
