@@ -6,7 +6,7 @@
 <!-- 전투 GIF 자리: 카드 드래그 → 턴 종료 → 카드 투척 연출 → 적 피격 -->
 ![전투 시연](docs/images/battle.gif)
 
-▶ **[시연 영상 보기 (Play.mp4, 720p · 약 1분 49초)](docs/video/Play.mp4)**
+▶ **[시연 영상 보기 (720p · 약 1분 49초)](https://github.com/user-attachments/assets/42b4735a-99c4-4f67-b188-1aa18b11ac2f)**
 
 ---
 
